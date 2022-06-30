@@ -7,3 +7,4 @@ int main()
                         {'O'}, {'O'}, {'X'} }
 }
 print("tic-tac-toe");
+exit(0);
