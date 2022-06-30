@@ -6,3 +6,4 @@ int main()
                         {'X'}, {'X'}, {'O'},
                         {'O'}, {'O'}, {'X'} }
 }
+print("tic-tac-toe");
