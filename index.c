@@ -37,12 +37,12 @@ void update_grid(char grid[SIZE][SIZE], int pos_x, int pos_y, char val) {
     grid[pos_x][pos_y] = val;
 }
 
-// reset the grid to contain all nulls.
+// reset the grid to contain all blanks.
 void reset_grid(char grid[SIZE][SIZE]) {
     int i, j;
     for (i = 0; i < SIZE; i++)
         for (j = 0; j < SIZE; j++) {
-            grid[i][j] = '\0';
+            grid[i][j] = ' ';
         }
 }
 
@@ -54,10 +54,8 @@ int main()
     int turn = 0; // 0 for X, 1 for O
     int no_moves = 0;
     int win;
-    char grid[SIZE][SIZE] = {
-                        {'X', 'X', 'O'},
-                        {'X', 'X', 'O'},
-                        {'O', 'O', 'X'} };
+    char grid[SIZE][SIZE];
+    reset_grid(grid);
 
     show_grid(grid); // REMOVE later
     while (1 && no_moves < 9) {
