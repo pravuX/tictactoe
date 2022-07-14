@@ -54,39 +54,33 @@ int main()
     int turn = 0; // 0 for X, 1 for O
     int no_moves = 0;
     int win;
+    char current_val = '\0';
     char grid[SIZE][SIZE];
     reset_grid(grid);
 
-    show_grid(grid); // REMOVE later
     while (1 && no_moves < 9) {
         if (turn == 0) {
-            turn = 1; // it's O's turn next.
-            puts("\nIt's X's turn");
-            puts("Enter position to put X");
-            scanf("%d%d", &pos_x, &pos_y);
-            update_grid(grid, pos_x, pos_y, 'X');
-            no_moves++; // make sure the users can input only untill the grid is fully filled
-            if ((win = check_win(grid, 'X'))) {
-                puts("X wins\n");
-                show_grid(grid);
-                break;
-            }
+            turn = 1; // switch turn to O
+            current_val = 'X';
         } else {
-            turn = 0; // it's X's turn next.
-            puts("\nIt's O's turn");
-            puts("Enter position to put O");
+            turn = 0; // switch turn to X
+            current_val = 'O';
+        }
+        printf("It's %c's turn\n", current_val);
+        printf("Enter position to put %c.\n", current_val);
+        scanf("%d%d", &pos_x, &pos_y);
+        while ((pos_x < 0 || pos_x > 2)
+                || (pos_y < 0 || pos_y > 2))
             scanf("%d%d", &pos_x, &pos_y);
-            update_grid(grid, pos_x, pos_y, 'O');
-            // check_win(grid, pos_x, pos_y, 'O');
-            no_moves++;
-            if ((win = check_win(grid, 'O'))) {
-                puts("O wins\n");
-                show_grid(grid);
-                break;
-            }
+        update_grid(grid, pos_x, pos_y, current_val);
+        no_moves++;
+        if ((win = check_win(grid, current_val))) {
+            printf("%c wins\n", current_val);
+            break;
         }
         show_grid(grid);
     }
+    show_grid(grid);
 
     return 0;
 }
