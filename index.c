@@ -45,7 +45,20 @@ void reset_grid(char grid[SIZE][SIZE]) {
             grid[i][j] = ' ';
         }
 }
+// void show_format(int i, int j)
+// {
+//     int a[3][3];
+//     for(i=0;i<3;i++)
+//     {
+//         for(j=0;j<3;j++)
+//         {
+//             scanf("%d", &a[i][j]);
+//             printf("%d", a[i][j]);
+//         }
 
+//     }
+// }
+// I wanted to show format but it didn't work.
 int main()
 {
     int pos_x, pos_y;
@@ -54,6 +67,10 @@ int main()
     int turn = 0; // 0 for X, 1 for O
     int no_moves = 0;
     int win;
+     // format like this::
+      printf("00 01 02\n\n");
+    printf("10 11 12\n\n");
+    printf("20 21 22\n\n");  
     char current_val = '\0';
     char grid[SIZE][SIZE];
     reset_grid(grid);
